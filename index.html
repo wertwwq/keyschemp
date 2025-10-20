@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitFlex - Онлайн тренировки</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                FitFlex
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#trainings">Тренировки</a></li>
+                <li><a href="#online-training" onclick="showOnlineTrainingModal()">Онлайн-тренировки</a></li>
+                <li><a href="#coaches">Тренеры</a></li>
+                <li><a href="#pricing">Цены</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="login-btn" onclick="openLoginModal()">Войти</button>
+                <button class="register-btn" onclick="openRegisterModal()">Регистрация</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Тренируйтесь где угодно, когда угодно</h1>
+            <p>Профессиональные онлайн тренировки с персональными тренерами</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="openRegisterModal()">Начать бесплатно</button>
+                <button class="btn-secondary">Выбрать тренера</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">Довольных клиентов</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Профессиональных тренеров</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Доступ к тренировкам</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="img/istockphoto-621570248-170667a.jpg" alt="Фитнес тренировка">
+        </div>
+    </section>
+
+    <!-- Trainings Section -->
+    <section id="trainings" class="trainings">
+        <h2>Направления тренировок</h2>
+        <div class="training-grid">
+            <div class="training-card" onclick="selectTraining('strength')">
+                <div class="training-icon">
+                    <i class="fas fa-dumbbell"></i>
+                </div>
+                <h3>Силовые тренировки</h3>
+                <p>Развивайте силу и выносливость с помощью прогрессивных нагрузок</p>
+            </div>
+            <div class="training-card" onclick="selectTraining('yoga')">
+                <div class="training-icon">
+                    <i class="fas fa-spa"></i>
+                </div>
+                <h3>Йога</h3>
+                <p>Гибкость, гармония и внутреннее равновесие</p>
+            </div>
+            <div class="training-card" onclick="selectTraining('cardio')">
+                <div class="training-icon">
+                    <i class="fas fa-running"></i>
+                </div>
+                <h3>Кардио</h3>
+                <p>Сжигайте калории и укрепляйте сердечно-сосудистую систему</p>
+            </div>
+            <div class="training-card" onclick="selectTraining('functional')">
+                <div class="training-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Функциональный тренинг</h3>
+                <p>Улучшайте повседневные движения и координацию</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coaches Section -->
+    <section id="coaches" class="coaches">
+        <h2>Наши тренеры</h2>
+        <div class="coaches-grid">
+            <div class="coach-card">
+                <div class="coach-image">
+                    <img src="https://dussh-6.ru/_nuxt/img/egorova.42a6604.png" alt="Тренер Анна">
+                    <div class="coach-overlay">
+                        <button class="coach-btn" onclick="openRegisterModal()">Записаться</button>
+                    </div>
+                </div>
+                <h3>Анна Иванова</h3>
+                <p>Сертифицированный тренер по йоге</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>4.9</span>
+                </div>
+            </div>
+            <div class="coach-card">
+                <div class="coach-image">
+                    <img src="https://wp.tomsk.ru/upload/CM/images/4_vbimage_209_34_955.jpg" alt="Тренер Максим">
+                    <div class="coach-overlay">
+                        <button class="coach-btn" onclick="openRegisterModal()">Записаться</button>
+                    </div>
+                </div>
+                <h3>Максим Петров</h3>
+                <p>Эксперт по силовому тренингу</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span>5.0</span>
+                </div>
+            </div>
+            <div class="coach-card">
+                <div class="coach-image">
+                    <img src="img/661e3757b9d15395db05cc86_661e3762e8af33.36976001.jpg" alt="Тренер Елена">
+                    <div class="coach-overlay">
+                        <button class="coach-btn" onclick="openRegisterModal()">Записаться</button>
+                    </div>
+                </div>
+                <h3>Елена Смирнова</h3>
+                <p>Специалист по кардио тренировкам</p>
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <span>4.8</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- халявная тренировка -->
+  <!-- Free Trial Section -->
+    <section id="trial" class="trial">
+        <div class="trial-container">
+            <div class="trial-content">
+                <h2>Бесплатное пробное онлайн занятие</h2>
+                <p class="trial-description">Присоединяйтесь к живому онлайн занятию и почувствуйте преимущества тренировок с профессиональным тренером</p>
+                
+                <div class="trial-features">
+                    <div class="trial-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Прямой эфир с тренером</span>
+                    </div>
+                    <div class="trial-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Интерактивное общение</span>
+                    </div>
+                    <div class="trial-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Подходит для любого уровня</span>
+                    </div>
+                    <div class="trial-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Ответы на вопросы в реальном времени</span>
+                    </div>
+                </div>
+
+                <div class="trial-timer">
+                    <h3>До начала следующего пробного занятия:</h3>
+                    <div class="timer-display">
+                        <div class="time-unit">
+                            <span id="trialDays">00</span>
+                            <small>дней</small>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                            <span id="trialHours">00</span>
+                            <small>часов</small>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                            <span id="trialMinutes">00</span>
+                            <small>минут</small>
+                        </div>
+                        <div class="time-separator">:</div>
+                        <div class="time-unit">
+                            <span id="trialSeconds">00</span>
+                            <small>секунд</small>
+                        </div>
+                    </div>
+                    <p class="next-session">Следующая сессия: <span id="nextSessionTime">сегодня в 19:00</span></p>
+                </div>
+
+                <div class="trial-info">
+                    <div class="info-card">
+                        <i class="fas fa-video"></i>
+                        <h4>Как присоединиться</h4>
+                        <p>Просто нажмите "Смотреть онлайн" когда начнется трансляция</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-clock"></i>
+                        <h4>Расписание</h4>
+                        <p>Пн, Ср, Пт в 19:00 • Сб в 11:00</p>
+                    </div>
+                </div>
+
+                <div class="trial-stats">
+                    <div class="trial-stat">
+                        <div class="stat-number">1500+</div>
+                        <div class="stat-label">пробных занятий проведено</div>
+                    </div>
+                    <div class="trial-stat">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">клиентов продолжают тренировки</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trial-video">
+                <div class="live-session-card">
+                    <div class="session-header">
+                        <i class="fas fa-broadcast-tower"></i>
+                        <h3>LIVE Сессия</h3>
+                    </div>
+                    <div class="session-info">
+                        <div class="session-detail">
+                            <i class="fas fa-dumbbell"></i>
+                            <div>
+                                <strong>Функциональная тренировка</strong>
+                                <span>Для всех уровней</span>
+                            </div>
+                        </div>
+                        <div class="session-detail">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>25 минут</strong>
+                                <span>Продолжительность</span>
+                            </div>
+                        </div>
+                        <div class="session-detail">
+                            <i class="fas fa-user-tie"></i>
+                            <div>
+                                <strong>Профессиональный тренер</strong>
+                                <span>Опыт 5+ лет</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="live-indicator">
+                        <div class="live-dot"></div>
+                        <span>LIVE трансляция</span>
+                    </div>
+                    
+                    <button class="btn-watch-live" onclick="watchLiveSession()" disabled>
+                        <i class="fas fa-circle"></i>
+                        Смотреть онлайн
+                    </button>
+                    <p class="watch-note">Кнопка станет активной за 15 минут до начала занятия</p>
+
+                    <div class="session-actions">
+                        <button class="btn-secondary" onclick="setReminder()">
+                            <i class="fas fa-bell"></i>
+                            Напомнить о занятии
+                        </button>
+                        <button class="btn-outline" onclick="shareSession()">
+                            <i class="fas fa-share"></i>
+                            Поделиться
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Preview Modal -->
+    <div id="videoModal" class="modal video-modal">
+        <div class="modal-content video-modal-content">
+            <div class="modal-header">
+                <h2>Пример онлайн тренировки</h2>
+                <span class="close" onclick="closeVideoModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <video controls poster="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">
+                            <source src="https://assets.codepen.io/3364143/710.mp4" type="video/mp4">
+                            Ваш браузер не поддерживает видео.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h4>Функциональная тренировка для начинающих</h4>
+                        <p>Длительность: 25 минут • Уровень: Начальный • Тренер: Анна Иванова</p>
+                        <div class="video-features">
+                            <span><i class="fas fa-dumbbell"></i> Силовые упражнения</span>
+                            <span><i class="fas fa-heartbeat"></i> Кардио нагрузка</span>
+                            <span><i class="fas fa-user-check"></i> Работа с тренером</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-actions">
+                    <button class="btn-secondary" onclick="setReminder()">
+                        <i class="fas fa-bell"></i>
+                        Напомнить о следующем занятии
+                    </button>
+                    <button class="btn-primary" onclick="watchLiveSession()">
+                        <i class="fas fa-play-circle"></i>
+                        Присоединиться к живому занятию
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Preview Modal -->
+    <div id="videoModal" class="modal video-modal">
+        <div class="modal-content video-modal-content">
+            <div class="modal-header">
+                <h2>Пример онлайн тренировки</h2>
+                <span class="close" onclick="closeVideoModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://yandex.ru/video/embed/10736337333562300433" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>Функциональная тренировка для начинающих</h4>
+                        <p>Длительность: 25 минут • Уровень: Начальный</p>
+                        <div class="video-features">
+                            <span><i class="fas fa-dumbbell"></i> Силовые упражнения</span>
+                            <span><i class="fas fa-heartbeat"></i> Кардио нагрузка</span>
+                            <span><i class="fas fa-user-check"></i> Работа с тренером</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-actions">
+                    <button class="btn-secondary" onclick="setReminder()">
+                        <i class="fas fa-bell"></i>
+                        Напомнить о следующем занятии
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Preview Modal -->
+    <div id="videoModal" class="modal video-modal">
+        <div class="modal-content video-modal-content">
+            <div class="modal-header">
+                <h2>Пример онлайн тренировки</h2>
+                <span class="close" onclick="closeVideoModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="video-container">
+                    <video id="trialVideo" controls poster="https://yandex.ru/video/preview/10736337333562300433">
+                        <source src="#" type="video/mp4">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                    <div class="video-info">
+                        <h4>Функциональная тренировка для начинающих</h4>
+                        <p>Длительность: 25 минут • Уровень: Начальный</p>
+                        <div class="video-features">
+                            <span><i class="fas fa-dumbbell"></i> Силовые упражнения</span>
+                            <span><i class="fas fa-heartbeat"></i> Кардио нагрузка</span>
+                            <span><i class="fas fa-user-check"></i> Работа с тренером</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-actions">
+                    <button class="btn-secondary" onclick="setReminder()">
+                        <i class="fas fa-bell"></i>
+                        Напомнить о следующем занятии
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="pricing-header">
+            <h2>Выберите свой план</h2>
+            <p>Начните свой путь к здоровому образу жизни с подходящим тарифом</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <div class="price-header">
+                    <h3>BASE</h3>
+                    <p>Для начинающих</p>
+                </div>
+                <div class="price">
+                    <span class="currency">₽</span>
+                    <span class="amount">2500</span>
+                    <span class="period">/месяц</span>
+                </div>
+                <ul class="features">
+                    <li><i class="fas fa-check"></i> Доступ к онлайн-тренировкам (видео уроки, программы разной направленности и сложности)</li>
+                    <li><i class="fas fa-check"></i> Мотивационные челленджи и поддержка через чат-боты и соцсети</li>
+                    <li><i class="fas fa-check"></i> Возможность бронирования времени в партнерских фитнес-залах (до 4 посещений в месяц)</li>
+                    <li><i class="fas fa-times"></i> Персональные консультации</li>
+                    <li><i class="fas fa-times"></i> План питания</li>
+                    <li><i class="fas fa-times"></i> Прогресс-отслеживание</li>
+                </ul>
+                <button class="price-btn" onclick="selectPlan('basic')">Выбрать план</button>
+            </div>
+
+            <div class="price-card popular">
+                <div class="popular-badge">Популярный</div>
+                <div class="price-header">
+                    <h3>PREMIUM</h3>
+                    <p>Для регулярных тренировок</p>
+                </div>
+                <div class="price">
+                    <span class="currency">₽</span>
+                    <span class="amount">3500</span>
+                    <span class="period">/месяц</span>
+                </div>
+                <ul class="features">
+                    <li><i class="fas fa-check"></i>  Все включено из базовой подписки</li>
+                    <li><i class="fas fa-check"></i>  Неограниченный доступ к физическим залам сети FitFlex</li>
+                    <li><i class="fas fa-check"></i> Отслеживание прогресса и интеграция с умными устройствамии</li>
+                    <li><i class="fas fa-check"></i> Персональные консультации с тренерами (еженедельно)</li>
+                    <li><i class="fas fa-check"></i> Индивидуальные планы тренировок</li>
+                    <li><i class="fas fa-times"></i> План питания</li>
+                </ul>
+                <button class="price-btn primary" onclick="selectPlan('pro')">Выбрать план</button>
+            </div>
+
+            <div class="price-card">
+                <div class="price-header">
+                    <h3>VIP</h3>
+                    <p>Максимальные результаты</p>
+                </div>
+                <div class="price">
+                    <span class="currency">₽</span>
+                    <span class="amount">5000</span>
+                    <span class="period">/месяц</span>
+                </div>
+                <ul class="features">
+                    <li><i class="fas fa-check"></i> Все включено из премиум подписки</li>
+                    <li><i class="fas fa-check"></i>  Неограниченный доступ к физическим залам сети FitFlex</li>
+                    <li><i class="fas fa-check"></i> Персональные консультации с тренерами (еженедельно)</li>
+                    <li><i class="fas fa-check"></i> Индивидуальные планы тренировок</li>
+                    <li><i class="fas fa-check"></i> Эксклюзивный мерч и скидки у партнёров</li>
+                </ul>
+                <button class="price-btn" onclick="selectPlan('premium')">Выбрать план</button>
+            </div>
+        </div>
+        
+        <div class="pricing-features">
+            <div class="feature">
+                <i class="fas fa-shield-alt"></i>
+                <h4>Гарантия возврата</h4>
+                <p>Вернем деньги в течение 14 дней, если не понравится</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-sync-alt"></i>
+                <h4>Смена тарифа</h4>
+                <p>Можно изменить тариф в любой момент</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-pause-circle"></i>
+                <h4>Заморозка</h4>
+                <p>Возможность заморозить подписку на 30 дней в год</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- наши контакты -->
+    <section id="contact" class="contact">
+        <h2>Свяжитесь с нами</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <p class="contact-description">Готовы начать свой фитнес-путь? Мы здесь, чтобы помочь!</p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Телефон</h4>
+                            <p>+7 (9XX) XXX-XX-XX</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>FitFlex.gmail.ru</p>   
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Адрес</h4>
+                            <p>Чебоксары, ул. 139 стрелковой дивизии, д. 12</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Время работы</h4>
+                            <p>Пн-Пт: 8:00 - 22:00</p>
+                            <p>Сб-Вс: 9:00 - 20:00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <h4>Мы в соцсетях</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <div class="map-placeholder">
+                <i class="fas fa-map-marked-alt"></i>
+                <h4>Карта залов FitFlex</h4>
+                <p>Наши залы расположены по всей России</p>
+                <button class="btn-outline">Посмотреть на карте</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- регистр -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Присоединяйтесь к FitFlex</h2>
+                <span class="close" onclick="closeRegisterModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form class="auth-form" id="registerForm">
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="regName" placeholder="Полное имя" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="regEmail" placeholder="Email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="regPhone" placeholder="Телефон" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="regPassword" placeholder="Пароль" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="regConfirmPassword" placeholder="Подтвердите пароль" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select id="regTrainingType" required>
+                            <option value="">Выберите тип тренировок</option>
+                            <option value="strength">Силовые тренировки</option>
+                            <option value="yoga">Йога</option>
+                            <option value="cardio">Кардио</option>
+                            <option value="functional">Функциональный тренинг</option>
+                        </select>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="regAgreement" required>
+                        <label for="regAgreement">Я соглашаюсь с <a href="#">условиями использования</a> и <a href="#">политикой конфиденциальности</a></label>
+                    </div>
+                    <button type="submit" class="btn-primary full-width">
+                        <i class="fas fa-user-plus"></i>
+                        Создать аккаунт
+                    </button>
+                </form>
+                <div class="auth-divider">
+                    <span>или войдите через</span>
+                </div>
+                <div class="social-auth">
+                    <button class="social-btn google-btn">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </button>
+                    <button class="social-btn vk-btn">
+                        <i class="fab fa-vk"></i>
+                        VK
+                    </button>
+                    <button class="social-btn yandex-btn">
+                        <i class="fab fa-yandex"></i>
+                        Yandex
+                    </button>
+                </div>
+                <div class="auth-switch">
+                    Уже есть аккаунт? <a href="#" onclick="switchToLogin()">Войти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- вход в акк -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Вход в аккаунт</h2>
+                <span class="close" onclick="closeLoginModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form class="auth-form" id="loginForm">
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="loginEmail" placeholder="Email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="loginPassword" placeholder="Пароль" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="rememberMe">
+                            <label for="rememberMe">Запомнить меня</label>
+                        </div>
+                        <a href="#" class="forgot-password">Забыли пароль?</a>
+                    </div>
+                    <button type="submit" class="btn-primary full-width">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Войти
+                    </button>
+                </form>
+                <div class="auth-divider">
+                    <span>или войдите через</span>
+                </div>
+                <div class="social-auth">
+                    <button class="social-btn google-btn">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </button>
+                    <button class="social-btn vk-btn">
+                        <i class="fab fa-vk"></i>
+                        VK
+                    </button>
+                    <button class="social-btn yandex-btn">
+                        <i class="fab fa-yandex"></i>
+                        Yandex
+                    </button>
+                </div>
+                <div class="auth-switch">
+                    Нет аккаунта? <a href="#" onclick="switchToRegister()">Зарегистрироваться</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- нижняя часть веба-->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo">
+                    <i class="fas fa-dumbbell"></i>
+                    FitFlex
+                </div>
+                <p>Ваш путь к здоровому образу жизни начинается здесь. Профессиональные тренировки онлайн и оффлайн.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Тренировки</h4>
+                <ul>
+                    <li><a href="#">Силовые</a></li>
+                    <li><a href="#">Йога</a></li>
+                    <li><a href="#">Кардио</a></li>
+                    <li><a href="#">Функциональные</a></li>
+                    <li><a href="#">Персональные</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Компания</h4>
+                <ul>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Тренеры</a></li>
+                    <li><a href="#">Вакансии</a></li>
+                    <li><a href="#">Блог</a></li>
+                    <li><a href="#">Партнеры</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Поддержка</h4>
+                <ul>
+                    <li><a href="#">Помощь</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Контакты</a></li>
+                    <li><a href="#">Политика конфиденциальности</a></li>
+                    <li><a href="#">Условия использования</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Контакты</h4>
+                <div class="footer-contact">
+                    <p><i class="fas fa-phone"></i> +7 (9XX) XXX-XX-XX</p>
+                    <p><i class="fas fa-envelope"></i> FitFlex@gmail.ru</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Чебоксары, ул. 139 стрелковой дивизии , д.12</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 FitFlex. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+   <!-- онлайн занятия -->
+    <div id="onlineTrainingModal" class="modal online-training-modal">
+        <div class="modal-content online-training-content">
+            <div class="modal-header">
+                <h2>Онлайн-тренировки</h2>
+                <span class="close" onclick="closeOnlineTrainingModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="online-training-intro">
+                    <h3>Начните свой фитнес-путь с нами!</h3>
+                    <p>Доступ к библиотеке видео-тренировок для занятий в любое удобное время</p>
+                </div>
+
+                <div class="training-options">
+                    <div class="training-option popular" onclick="selectTrainingOption('recorded')">
+                        <div class="popular-badge">Рекомендуем</div>
+                        <div class="option-icon">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <h4>Видео-курсы</h4>
+                        <p>Записанные тренировки для занятий в любое время суток</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Доступ 24/7 с любого устройства</li>
+                            <li><i class="fas fa-check"></i> 150+ тренировок разной сложности</li>
+                            <li><i class="fas fa-check"></i> Программы от начинающего до продвинутого</li>
+                            <li><i class="fas fa-check"></i> Трекер прогресса и достижений</li>
+                            <li><i class="fas fa-check"></i> Поддержка куратора</li>
+                        </ul>
+                        <div class="option-footer">
+                            <span class="price">от 2500₽/месяц</span>
+                            <button class="btn-primary">Выбрать</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="training-benefits">
+                    <h3>Преимущества видео-курсов</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit">
+                            <i class="fas fa-clock"></i>
+                            <h4>Гибкий график</h4>
+                            <p>Занимайтесь когда удобно - утром, днем или вечером</p>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-redo"></i>
+                            <h4>Повторение</h4>
+                            <p>Возвращайтесь к сложным упражнениям снова и снова</p>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Прогресс</h4>
+                            <p>Пошаговые программы для постепенного развития</p>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-dumbbell"></i>
+                            <h4>Разнообразие</h4>
+                            <p>Йога, кардио, силовые и функциональные тренировки</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">видео-тренировок</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">фитнес-программ</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">профессиональных тренеров</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">доступ к платформе</div>
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <h3>Готовы начать?</h3>
+                    <p>Получите доступ ко всей библиотеке тренировок с подпиской</p>
+                    <button class="btn-primary large" onclick="goToPricing()">
+                        <i class="fas fa-arrow-right"></i>
+                        Выбрать подписку
+                    </button>
+                    <p class="cta-note">Первые 7 дней бесплатно для новых пользователей</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
