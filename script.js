@@ -751,3 +751,63 @@ document.querySelectorAll('a[href="#pricing"]').forEach(link => {
         goToPricing();
     });
 });
+// Mobile Menu functionality
+function initMobileMenu() {
+    const mobileMenuBtn = document.createElement('button');
+    mobileMenuBtn.className = 'mobile-menu-btn';
+    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    
+    const navbar = document.querySelector('.navbar');
+    navbar.appendChild(mobileMenuBtn);
+    
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    overlay.addEventListener('click', closeMobileMenu);
+    document.body.appendChild(overlay);
+}
+
+function toggleMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    const overlay = document.querySelector('.nav-overlay');
+    
+    navLinks.classList.toggle('active');
+    overlay.classList.toggle('active');
+    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+}
+
+function closeMobileMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    const overlay = document.querySelector('.nav-overlay');
+    
+    navLinks.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Close mobile menu when clicking on links
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+});
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    initMobileMenu();
+    // ... остальной код инициализации
+});
+
+// Prevent zoom on double tap (iOS)
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function (event) {
+    const now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
+
+// Improve touch scrolling
+document.addEventListener('touchstart', function() {
+    // Add smooth scrolling for touch devices
+}, { passive: true });
