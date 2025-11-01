@@ -1,4 +1,4 @@
-// Modal functionality
+// модальная функция 
 function openRegisterModal() {
     document.getElementById('registerModal').style.display = 'block';
     document.body.style.overflow = 'hidden';
@@ -29,7 +29,7 @@ function switchToRegister() {
     openRegisterModal();
 }
 
-// Close modal when clicking outside
+// закрытие мод режима при нажатии снаружи
 window.onclick = function(event) {
     const registerModal = document.getElementById('registerModal');
     const loginModal = document.getElementById('loginModal');
@@ -46,7 +46,7 @@ window.onclick = function(event) {
     }
 }
 
-// Form handling
+// регистр
 document.getElementById('registerForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -58,7 +58,7 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
         trainingType: document.getElementById('regTrainingType').value
     };
     
-    // Basic validation
+    // недоделанные-неправильные формы
     if (formData.password !== document.getElementById('regConfirmPassword').value) {
         showNotification('Пароли не совпадают!', 'error');
         return;
@@ -69,14 +69,14 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
         return;
     }
     
-    // Here you would typically send the data to a server
+    // данные отправляются на серврак
     console.log('Registration data:', formData);
     
-    // Show success message
+    // консоль итога
     showNotification('Регистрация успешна! Добро пожаловать в FitPro!', 'success');
     closeRegisterModal();
     
-    // Reset form
+    // новая форма
     this.reset();
 });
 
@@ -89,21 +89,21 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
         rememberMe: document.getElementById('rememberMe').checked
     };
     
-    // Here you would typically send the data to a server
+    // сервак
     console.log('Login data:', formData);
     
-    // Show success message
+    // консооль итога
     showNotification('Вход выполнен успешно!', 'success');
     closeLoginModal();
     
-    // Update UI for logged in user
+    // обновление сайта для зашедших в акк
     updateUserUI(formData.email);
     
-    // Reset form
+    // перезагрузка
     this.reset();
 });
 
-// Training selection
+// тренировки
 function selectTraining(type) {
     const trainingTypes = {
         'strength': 'Силовые тренировки',
@@ -114,18 +114,18 @@ function selectTraining(type) {
     
     openRegisterModal();
     
-    // Set the selected training type in the registration form
+    // выбор вида тренировки
     setTimeout(() => {
         document.getElementById('regTrainingType').value = type;
     }, 100);
 }
 
-// Plan selection
+// выбор тарифа
 function selectPlan(plan) {
     const plans = {
-        'basic': 'Базовый (990₽/месяц)',
-        'pro': 'Профессиональный (1990₽/месяц)',
-        'premium': 'Премиум (3990₽/месяц)'
+        'BASE': 'BASE (2500₽/месяц)',
+        'PREMIUM': 'PREMIUM (3500₽/месяц)',
+        'VIP': 'VIP (5000₽/месяц)'
     };
     
     if (!isUserLoggedIn()) {
@@ -134,13 +134,13 @@ function selectPlan(plan) {
         return;
     }
     
-    // Here you would typically process the payment
+    // 
     console.log('Selected plan:', plan, plans[plan]);
     
-    showNotification(`Вы успешно выбрали тариф: ${plans[plan]}! Мы свяжемся с вами для подтверждения.`, 'success');
+    showNotification(`Вы успешно выбрали тариф: Here you would typically process the payment${plans[plan]}! Мы свяжемся с вами для подтверждения.`, 'success');
 }
 
-// Video Modal functions
+// видео
 function openVideoPreview() {
     document.getElementById('videoModal').style.display = 'block';
     document.body.style.overflow = 'hidden';
@@ -151,7 +151,7 @@ function closeVideoModal() {
     document.body.style.overflow = 'auto';
 }
 
-// Watch Live Session
+// стримчек
 function watchLiveSession() {
     if (!isUserLoggedIn()) {
         openRegisterModal();
@@ -159,25 +159,25 @@ function watchLiveSession() {
         return;
     }
     
-    // Simulate opening live stream
+    // иллюзия видео
     const sessionTime = document.getElementById('nextSessionTime').textContent;
     const liveStreamURL = "https://www.youtube.com/live/jfKfPfyJRdk?si=KqKQdPN1sC7qQ8yZ";
     
-    // Open in new tab
+    // новое окно
     window.open(liveStreamURL, '_blank');
     
     showNotification(`Присоединяйтесь к трансляции! Ссылка открывается в новом окне. Время: ${sessionTime}`, 'success');
 }
 
-// Set Reminder
+// напоминалка
 function setReminder() {
     const sessionTime = document.getElementById('nextSessionTime').textContent;
     
     if ('Notification' in window && Notification.permission === 'granted') {
-        // Schedule browser notification
+        // запланнированная напоминалака
         scheduleNotification(sessionTime);
     } else if ('Notification' in window && Notification.permission !== 'denied') {
-        // Request permission
+        // разрешение
         Notification.requestPermission().then(permission => {
             if (permission === 'granted') {
                 scheduleNotification(sessionTime);
@@ -195,7 +195,7 @@ function scheduleNotification(sessionTime) {
     const notificationTime = new Date(now.getTime() + 60 * 60 * 1000); // 1 hour from now
     
     if ('serviceWorker' in navigator && 'PushManager' in window) {
-        // For PWA notifications
+        // ДЛЯ УВЕДОМЛЕНИЙ
         navigator.serviceWorker.ready.then(registration => {
             registration.showNotification('Напоминание о тренировке', {
                 body: `Пробное занятие начнется через 1 час! ${sessionTime}`,
@@ -212,7 +212,7 @@ function scheduleNotification(sessionTime) {
             });
         });
     } else {
-        // Fallback to simple notification
+        // переход до простных обнов.
         setTimeout(() => {
             if (Notification.permission === 'granted') {
                 new Notification('FitPro - Напоминание', {
@@ -226,24 +226,23 @@ function scheduleNotification(sessionTime) {
     showNotification('Напоминание установлено! Мы напомним вам за 1 час до начала занятия.', 'success');
 }
 
-// Trial Session Timer
+// таймер до пробонго занятия 
 let trialTimer;
 let nextSessionDate;
 
 function startTrialTimer() {
-    // Set next session based on schedule
+    //назначения следующего 
     const now = new Date();
     nextSessionDate = calculateNextSession(now);
     
     updateNextSessionTime(nextSessionDate);
     
-    // Start timer
+    // таймерр запуска
     trialTimer = setInterval(() => {
         updateTrialCountdown(nextSessionDate);
         updateWatchButton(nextSessionDate);
     }, 1000);
     
-    // Initial update
     updateTrialCountdown(nextSessionDate);
     updateWatchButton(nextSessionDate);
 }
@@ -253,7 +252,7 @@ function calculateNextSession(now) {
     const dayOfWeek = now.getDay();
     const currentHour = now.getHours();
     
-    // Schedule: Mon, Wed, Fri at 19:00, Sat at 11:00
+    // расписание
     const schedule = [
         { day: 1, hour: 19 }, // Monday
         { day: 3, hour: 19 }, // Wednesday
@@ -261,7 +260,7 @@ function calculateNextSession(now) {
         { day: 6, hour: 11 }  // Saturday
     ];
     
-    // Find next session
+    // следующая сессия
     for (let i = 0; i < 7; i++) {
         const testDate = new Date(now);
         testDate.setDate(now.getDate() + i);
@@ -272,12 +271,12 @@ function calculateNextSession(now) {
                 const sessionDate = new Date(testDate);
                 sessionDate.setHours(session.hour, 0, 0, 0);
                 
-                // If this session is in the future, return it
+                // возращения если он в будущем
                 if (sessionDate > now) {
                     return sessionDate;
                 }
                 
-                // If it's today but time hasn't passed yet
+                // если сегодня,но время не пришло
                 if (testDate.getDate() === now.getDate() && 
                     (currentHour < session.hour || (currentHour === session.hour && now.getMinutes() === 0))) {
                     return sessionDate;
@@ -286,7 +285,7 @@ function calculateNextSession(now) {
         }
     }
     
-    // Fallback: next Monday at 19:00
+    // запасной вариант след. понедельник в 19 00
     const daysUntilMonday = (1 - dayOfWeek + 7) % 7;
     nextSession.setDate(now.getDate() + (daysUntilMonday === 0 ? 7 : daysUntilMonday));
     nextSession.setHours(19, 0, 0, 0);
@@ -298,7 +297,7 @@ function updateTrialCountdown(targetDate) {
     const distance = targetDate - now;
     
     if (distance < 0) {
-        // Session time passed, calculate next session
+        // расчет следующего сеанса
         const nextSession = calculateNextSession(new Date());
         updateNextSessionTime(nextSession);
         updateTrialCountdown(nextSession);
@@ -333,7 +332,7 @@ function updateWatchButton(targetDate) {
     const distance = targetDate - now;
     const watchButton = document.querySelector('.btn-watch-live');
     
-    // Enable button 15 minutes before session and during session
+    // кнопка работает за 15 минут
     if (distance <= 15 * 60 * 1000 && distance > -2 * 60 * 60 * 1000) { // 2 hours after session end
         watchButton.classList.add('active');
         watchButton.disabled = false;
@@ -350,14 +349,14 @@ function updateWatchButton(targetDate) {
     }
 }
 
-// User management
+// упр пользователем
 function isUserLoggedIn() {
-    // Check if user is logged in (for demo, always false)
+    // проверка вошел ли пользователь в систему
     return localStorage.getItem('userLoggedIn') === 'true';
 }
 
 function updateUserUI(email) {
-    // Update UI for logged in user
+    // обнова интеррфейса для зашедшего
     const authButtons = document.querySelector('.auth-buttons');
     if (authButtons && isUserLoggedIn()) {
         authButtons.innerHTML = `
@@ -375,9 +374,9 @@ function logout() {
     location.reload();
 }
 
-// Notification system
+// система обновлений
 function showNotification(message, type = 'info') {
-    // Remove existing notifications
+    // удаление обновлений существующих
     const existingNotifications = document.querySelectorAll('.notification');
     existingNotifications.forEach(notification => notification.remove());
     
@@ -395,7 +394,7 @@ function showNotification(message, type = 'info') {
     
     document.body.appendChild(notification);
     
-    // Add styles if not already added
+    // добавление стилей
     if (!document.querySelector('#notification-styles')) {
         const styles = document.createElement('style');
         styles.id = 'notification-styles';
@@ -441,7 +440,7 @@ function showNotification(message, type = 'info') {
         document.head.appendChild(styles);
     }
     
-    // Auto remove after 5 seconds
+    // удаление автоматическое через 5 секунд
     setTimeout(() => {
         if (notification.parentElement) {
             notification.remove();
@@ -459,7 +458,7 @@ function getNotificationIcon(type) {
     return icons[type] || 'fa-info-circle';
 }
 
-// Smooth scrolling for navigation links
+// плавная прокрутка ссылок
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -476,7 +475,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Header background on scroll
+// фон на прокрутке
 window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
     if (window.scrollY > 100) {
@@ -488,7 +487,7 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Social auth buttons
+// кнопоока соц. авторзации 
 document.querySelectorAll('.social-btn').forEach(btn => {
     btn.addEventListener('click', function() {
         const platform = this.classList[1].replace('-btn', '');
@@ -496,12 +495,12 @@ document.querySelectorAll('.social-btn').forEach(btn => {
     });
 });
 
-// Map button functionality
+// функции отображения карты
 document.querySelector('.map-placeholder .btn-outline')?.addEventListener('click', function() {
     showNotification('Функция карты будет реализована в ближайшее время!', 'info');
 });
 
-// Coach booking
+// бррронирование тренеров
 function bookCoachSession(coachName) {
     if (!isUserLoggedIn()) {
         openRegisterModal();
@@ -512,7 +511,7 @@ function bookCoachSession(coachName) {
     showNotification(`Вы записаны на пробную тренировку с ${coachName}! Мы свяжемся с вами для подтверждения.`, 'success');
 }
 
-// Training card interactions
+// взаимодействие с обучающими карточками
 document.querySelectorAll('.training-card').forEach(card => {
     card.addEventListener('click', function() {
         const trainingName = this.querySelector('h3').textContent;
@@ -520,7 +519,7 @@ document.querySelectorAll('.training-card').forEach(card => {
     });
 });
 
-// Price card interactions
+// цены 
 document.querySelectorAll('.price-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-10px)';
@@ -533,20 +532,20 @@ document.querySelectorAll('.price-card').forEach(card => {
     });
 });
 
-// Initialize everything when page loads
+// инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
     console.log('FitPro website loaded successfully!');
     
-    // Start trial timer
+    // запуск пробного таймера
     startTrialTimer();
     
-    // Check if user was logged in
+    // проверка заходил ли пользователь в программу 
     if (isUserLoggedIn()) {
         const userEmail = localStorage.getItem('userEmail');
         updateUserUI(userEmail);
     }
     
-    // Add loading animation
+    // загрузочная анимация
     const mainContent = document.querySelector('main');
     if (mainContent) {
         mainContent.style.opacity = '0';
@@ -557,11 +556,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     }
     
-    // Initialize tooltips
+    // инициализация всплывающих подсказок
     initializeTooltips();
 });
 
-// Tooltip system
+// система поодсзказок
 function initializeTooltips() {
     const tooltipElements = document.querySelectorAll('[data-tooltip]');
     
@@ -604,7 +603,7 @@ function hideTooltip() {
     }
 }
 
-// Performance optimization - lazy loading for images
+// оптимизация производительности - отложка загрузки
 if ('IntersectionObserver' in window) {
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -622,13 +621,13 @@ if ('IntersectionObserver' in window) {
     });
 }
 
-// Error handling
+// обработка ошибок
 window.addEventListener('error', function(e) {
     console.error('Error occurred:', e.error);
     showNotification('Произошла ошибка. Пожалуйста, обновите страницу.', 'error');
 });
 
-// Offline detection
+// появление интерррнета
 window.addEventListener('online', function() {
     showNotification('Соединение восстановлено', 'success');
 });
@@ -637,22 +636,22 @@ window.addEventListener('offline', function() {
     showNotification('Отсутствует подключение к интернету', 'warning');
 });
 
-// Add to home screen prompt (PWA)
+// добавление приглашения на глав экр
 let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
     
-    // Show install prompt
+    // приглашение для скачивания 
     setTimeout(() => {
         showNotification(
-            'Установите FitPro на свой телефон для быстрого доступа!',
+            'Установите FitFlex на свой телефон для быстрого доступа!',
             'info'
         );
     }, 5000);
 });
 
-// Service Worker registration for PWA
+// регистрация серверного рабоотника
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register('/sw.js').then(function(registration) {
@@ -662,7 +661,7 @@ if ('serviceWorker' in navigator) {
         });
     });
 }
-// Online Training Modal
+// онлайн обучение
 function showOnlineTrainingModal() {
     document.getElementById('onlineTrainingModal').style.display = 'block';
     document.body.style.overflow = 'hidden';
@@ -673,25 +672,25 @@ function closeOnlineTrainingModal() {
     document.body.style.overflow = 'auto';
 }
 
-// Select Training Option - теперь только один вариант
+// выбор вида тренировок- теперь только один вариант
 function selectTrainingOption(option) {
     showNotification('Вы выбрали видео-курсы! Переходим к подпискам...', 'success');
     
-    // Close modal and scroll to pricing
+    // закрытие модуля и переход к ценам
     setTimeout(() => {
         closeOnlineTrainingModal();
         goToPricing();
     }, 1000);
 }
 
-// Go to Pricing Section
+// цены
 function goToPricing() {
-    // Close any open modals
+    // закрытие всех модулей
     closeOnlineTrainingModal();
     closeRegisterModal();
     closeLoginModal();
     
-    // Scroll to pricing section
+    // раздел цен
     const pricingSection = document.getElementById('pricing');
     if (pricingSection) {
         const headerHeight = document.querySelector('.header').offsetHeight;
@@ -702,7 +701,7 @@ function goToPricing() {
             behavior: 'smooth'
         });
         
-        // Add highlight animation
+        // анимация выделения
         pricingSection.style.animation = 'highlight 2s ease-in-out';
         setTimeout(() => {
             pricingSection.style.animation = '';
@@ -710,7 +709,7 @@ function goToPricing() {
     }
 }
 
-// Update close modal function
+// обновление модулй закрытия функций
 window.onclick = function(event) {
     const registerModal = document.getElementById('registerModal');
     const loginModal = document.getElementById('loginModal');
@@ -727,7 +726,7 @@ window.onclick = function(event) {
     }
 }
 
-// Keyboard support for modals
+// Поддержка клавиатуры для модальных окон 
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         closeOnlineTrainingModal();
@@ -736,7 +735,7 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-// Update navigation
+// обновление навигации
 document.querySelectorAll('.nav-links a[href="#online-training"]').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
@@ -744,14 +743,14 @@ document.querySelectorAll('.nav-links a[href="#online-training"]').forEach(link 
     });
 });
 
-// Auto-scroll to pricing
+// авто прокрутка до цен
 document.querySelectorAll('a[href="#pricing"]').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         goToPricing();
     });
 });
-// Mobile Menu functionality
+// мобильное меню 
 function initMobileMenu() {
     const mobileMenuBtn = document.createElement('button');
     mobileMenuBtn.className = 'mobile-menu-btn';
@@ -761,7 +760,7 @@ function initMobileMenu() {
     const navbar = document.querySelector('.navbar');
     navbar.appendChild(mobileMenuBtn);
     
-    // Create overlay
+    // создание наложения
     const overlay = document.createElement('div');
     overlay.className = 'nav-overlay';
     overlay.addEventListener('click', closeMobileMenu);
@@ -786,18 +785,18 @@ function closeMobileMenu() {
     document.body.style.overflow = '';
 }
 
-// Close mobile menu when clicking on links
+// закрытие мобильного меню при переходе к  ссылкам
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', closeMobileMenu);
 });
 
-// Initialize when page loads
+// иницилизирование загрузок страниц
 document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     // ... остальной код инициализации
 });
 
-// Prevent zoom on double tap (iOS)
+// прердотваращение увелечения при двойном нажатии для ипхонов
 let lastTouchEnd = 0;
 document.addEventListener('touchend', function (event) {
     const now = (new Date()).getTime();
@@ -807,7 +806,7 @@ document.addEventListener('touchend', function (event) {
     lastTouchEnd = now;
 }, false);
 
-// Improve touch scrolling
+// улчушение сенсорной прокрутки
 document.addEventListener('touchstart', function() {
-    // Add smooth scrolling for touch devices
+    // плавная прокрутка для мобилок 
 }, { passive: true });
