@@ -23,7 +23,7 @@ body {
     background: #fff;
 }
 
-/* Header */
+/* заголовок */
 .header {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -126,7 +126,7 @@ body {
     box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
-/* Hero Section */
+/*  */
 .hero {
     display: flex;
     align-items: center;
@@ -244,7 +244,7 @@ body {
     transform: scale(1.02);
 }
 
-/* Sections */
+/* секции*/
 section {
     padding: 6rem 5%;
     max-width: 1400px;
@@ -271,7 +271,7 @@ section h2::after {
     border-radius: 2px;
 }
 
-/* Training Grid */
+/* тренировоочная сетка */
 .training-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -315,7 +315,7 @@ section h2::after {
     line-height: 1.6;
 }
 
-/* Coaches Grid */
+/* сетка тренеров */
 .coaches-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -602,7 +602,7 @@ section h2::after {
     line-height: 1.6;
 }
 
-/* Contact Section */
+/* сетка контактов */
 .contact {
     padding: 6rem 5%;
     background: white;
@@ -735,7 +735,7 @@ section h2::after {
     opacity: 0.9;
 }
 
-/* Footer */
+/* нижняя часть */
 .footer {
     background: var(--dark);
     color: white;
@@ -817,7 +817,7 @@ section h2::after {
     color: #adb5bd;
 }
 
-/* Free Trial Section */
+/* халявная тренировка*/
 .trial {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -883,7 +883,7 @@ section h2::after {
     font-size: 1.2rem;
 }
 
-/* Trial Timer */
+/* таймер  */
 .trial-timer {
     background: rgba(255, 255, 255, 0.1);
     padding: 2rem;
@@ -960,7 +960,7 @@ section h2::after {
     font-size: 1.2rem;
 }
 
-/* Trial Info Cards */
+/* инф */
 .trial-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -999,7 +999,7 @@ section h2::after {
     line-height: 1.4;
 }
 
-/* Live Session Card */
+/* лайв  */
 .live-session-card {
     background: rgba(255, 255, 255, 0.1);
     padding: 2rem;
@@ -1077,7 +1077,7 @@ section h2::after {
     font-size: 0.9rem;
 }
 
-/* Trial Stats in Content */
+/* фейк статистика */
 .trial-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1106,14 +1106,14 @@ section h2::after {
     opacity: 0.9;
 }
 
-/* Remove old video styles */
+/* удаление старых стилей */
 .video-preview,
 .demo-video,
 .youtube-video {
     display: none;
 }
 
-/* Responsive Design for Live Session */
+/* дизайн для лайва */
 @media (max-width: 768px) {
     .live-session-card {
         padding: 1.5rem;
@@ -1131,7 +1131,7 @@ section h2::after {
         grid-template-columns: 1fr;
     }
 }
-/* Watch Live Button */
+/* кнопка для лайва*/
 .btn-watch-live {
     width: 100%;
     padding: 1.2rem;
@@ -1173,7 +1173,7 @@ section h2::after {
     margin-top: 0.5rem;
 }
 
-/* Video Preview Styles */
+/* предваррительный просмотр */
 .video-preview {
     position: relative;
     border-radius: 20px;
@@ -1225,7 +1225,7 @@ section h2::after {
     font-weight: 500;
 }
 
-/* Demo Video Section */
+/* демо версия  */
 .demo-video {
     margin-top: 2rem;
     padding: 1.5rem;
@@ -1261,7 +1261,7 @@ section h2::after {
     margin-top: 0.5rem;
 }
 
-/* Modal Styles */
+/* модули */
 .modal {
     display: none;
     position: fixed;
@@ -1330,7 +1330,7 @@ section h2::after {
     padding: 2.5rem;
 }
 
-/* Auth Forms */
+/* авторизация */
 .auth-form {
     margin-bottom: 2rem;
 }
@@ -1491,7 +1491,7 @@ section h2::after {
     text-decoration: underline;
 }
 
-/* Video Modal */
+/* видео модули */
 .video-modal .modal-content {
     max-width: 900px;
 }
@@ -1551,7 +1551,7 @@ section h2::after {
     flex-wrap: wrap;
 }
 
-/* Responsive Design */
+/* дизайн адаптивный */
 @media (max-width: 1200px) {
     .footer-content {
         grid-template-columns: 1fr 1fr 1fr;
@@ -1765,7 +1765,7 @@ section h2::after {
     }
 }
 
-/* Utility Classes */
+/* классы полезности*/
 .text-center {
     text-align: center;
 }
@@ -1788,7 +1788,7 @@ section h2::after {
 .slide-up {
     animation: slideIn 0.5s ease-out;
 }
-/* Online Training Modal - Updated */
+/* онлайн обучение*/
 .training-options {
     display: flex;
     justify-content: center;
@@ -1812,7 +1812,7 @@ section h2::after {
     line-height: 1.4;
 }
 
-/* Course Stats */
+/* статистика курса */
 .course-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -1841,14 +1841,14 @@ section h2::after {
     line-height: 1.3;
 }
 
-/* CTA Note */
+/* примечания  */
 .cta-note {
     margin-top: 1rem;
     font-size: 0.9rem;
     opacity: 0.8;
 }
 
-/* Training Benefits Update */
+/* преимущества обучения*/
 .training-benefits h3 {
     text-align: center;
     margin-bottom: 2rem;
@@ -1885,7 +1885,7 @@ section h2::after {
     line-height: 1.5;
 }
 
-/* Responsive Design for Updated Modal */
+/* адапт дизайн для модул */
 @media (max-width: 768px) {
     .training-options {
         padding: 1rem;
@@ -1931,7 +1931,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Header - Mobile First */
+/* голова телефона*/
 .header {
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(10px);
@@ -1966,7 +1966,7 @@ body {
     color: var(--primary);
 }
 
-/* Mobile Menu */
+/* мобильное меню*/
 .mobile-menu-btn {
     display: none;
     background: none;
@@ -2050,7 +2050,7 @@ body {
     box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
-/* Hero Section - Mobile First */
+/* главная телефон */
 .hero {
     display: flex;
     flex-direction: column;
@@ -2181,7 +2181,7 @@ body {
     transform: scale(1.02);
 }
 
-/* Sections - Mobile First */
+/* секции мобилка */
 section {
     padding: 3rem 1rem;
     max-width: 1400px;
@@ -2208,7 +2208,7 @@ section h2::after {
     border-radius: 2px;
 }
 
-/* Training Grid - Mobile First */
+/* тренировочная сетка мобил */
 .training-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -2253,7 +2253,7 @@ section h2::after {
     font-size: 0.95rem;
 }
 
-/* Coaches Grid - Mobile First */
+/* трренировочная сетка мобил*/
 .coaches-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -2352,7 +2352,7 @@ section h2::after {
     font-weight: 600;
 }
 
-/* Pricing Section - Mobile First */
+/* раздел цен мобил  */
 .pricing {
     background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
     padding: 3rem 1rem;
@@ -2544,7 +2544,7 @@ section h2::after {
     font-size: 0.9rem;
 }
 
-/* Free Trial Section - Mobile First */
+/*бесплатная тренировка мобил */
 .trial {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -2601,7 +2601,7 @@ section h2::after {
     font-size: 1rem;
 }
 
-/* Trial Timer - Mobile */
+/* таймер телефон*/
 .trial-timer {
     background: rgba(255, 255, 255, 0.1);
     padding: 1.5rem;
@@ -2700,7 +2700,7 @@ section h2::after {
     }
 }
 
-/* Tablet styles */
+/* стили планшетов*/
 @media (min-width: 768px) {
     .navbar {
         padding: 1rem 2rem;
@@ -2773,7 +2773,7 @@ section h2::after {
     }
 }
 
-/* Desktop styles */
+/* рабочий стол */
 @media (min-width: 1024px) {
     .navbar {
         padding: 1rem 5%;
@@ -2816,7 +2816,7 @@ section h2::after {
     }
 }
 
-/* Mobile menu for small screens */
+/* мобил меню для маленьких экранов */
 @media (max-width: 767px) {
     .mobile-menu-btn {
         display: block;
@@ -2852,7 +2852,7 @@ section h2::after {
         text-align: center;
     }
     
-    /* Overlay when menu is open */
+    /*налоожение при откррытии меню */
     .nav-overlay {
         position: fixed;
         top: 0;
@@ -2872,7 +2872,7 @@ section h2::after {
     }
 }
 
-/* Touch device improvements */
+/* обнова для сенс устройств */
 @media (hover: none) and (pointer: coarse) {
     .training-card:hover,
     .coach-card:hover,
@@ -2887,7 +2887,7 @@ section h2::after {
     }
 }
 
-/* Safe area insets for modern phones */
+/* безопасные вставки для современных телефонов */
 @supports(padding: max(0px)) {
     .hero,
     section {
